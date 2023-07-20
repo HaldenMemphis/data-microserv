@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msc.datamicroserv.dao.mapper.BloodSugarMonitorMapper">
+    <resultMap id="BaseResultMap" type="com.msc.datamicroserv.dao.entity.BloodSugarMonitorData">
+        <result column="uuid" property="uuid" jdbcType="VARCHAR"/>
+        <result column="mac" property="mac" jdbcType="VARCHAR"/>
+        <result column="sourceIP" property="sourceIP" jdbcType="VARCHAR"/>
+        <result column="bloodSugar" property="bloodSugar" jdbcType="FLOAT"/>
+        <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="QueryBatchBloodSugarDataByTime" parameterType="String" resultMap="BaseResultMap">
+        SELECT uuid, mac, sourceIP, bloodSugar, timestamp
+        FROM bsd.blood_sugar_monitor
+        WHERE mac = #{mac}
+        <if test="startTime != 0  and endTime != 0">
+            AND timestamp BETWEEN #{startTime} AND #{endTime}
+        </if>
+    </select>
+</mapper>
