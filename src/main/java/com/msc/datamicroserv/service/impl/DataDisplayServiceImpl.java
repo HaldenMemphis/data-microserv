@@ -3,7 +3,6 @@ package com.msc.datamicroserv.service.impl;
 import com.msc.datamicroserv.dao.entity.BloodSugarMonitorData;
 import com.msc.datamicroserv.dao.mapper.BloodSugarMonitorMapper;
 import com.msc.datamicroserv.service.DataDisplayService;
-import com.msc.datamicroserv.utils.MessageConfig;
 import com.msc.datamicroserv.utils.RespVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +22,7 @@ public class DataDisplayServiceImpl implements DataDisplayService {
     @Autowired
     private BloodSugarMonitorMapper bloodSugarMonitorMapper;
 
-    @Resource
-    private MessageConfig messageConfig;
+
 
 
     @Override
