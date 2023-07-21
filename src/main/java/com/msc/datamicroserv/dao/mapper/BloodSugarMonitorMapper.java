@@ -1,5 +1,6 @@
 package com.msc.datamicroserv.dao.mapper;
 
+import com.msc.datamicroserv.api.request.DisplayDataReq;
 import com.msc.datamicroserv.dao.entity.BloodSugarMonitorData;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.util.List;
 @Mapper
 public interface BloodSugarMonitorMapper {
 
-    List<BloodSugarMonitorData> QueryBatchBloodSugarDataByTime(String mac, long startTime, long endTime);
+    List<BloodSugarMonitorData> QueryBatchBloodSugarDataByTime(DisplayDataReq request);
 
 
 }

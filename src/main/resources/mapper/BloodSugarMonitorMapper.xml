@@ -10,12 +10,17 @@
         <result column="timestamp" property="timestamp" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <select id="QueryBatchBloodSugarDataByTime" parameterType="String" resultMap="BaseResultMap">
+    <select id="QueryBatchBloodSugarDataByTime" parameterType="com.msc.datamicroserv.api.request.DisplayDataReq"
+            resultMap="BaseResultMap">
         SELECT uuid, mac, sourceIP, bloodSugar, timestamp
         FROM bsd.blood_sugar_monitor
         WHERE mac = #{mac}
-        <if test="startTime != 0  and endTime != 0">
-            AND timestamp BETWEEN #{startTime} AND #{endTime}
+        <if test="startTime != null">
+            AND timestamp > #{startTime,jdbcType=DATE}
         </if>
+        <if test="endTime != null">
+            AND #{endTime,jdbcType=DATE} > timestamp
+        </if>
+        ORDER BY timestamp
     </select>
 </mapper>

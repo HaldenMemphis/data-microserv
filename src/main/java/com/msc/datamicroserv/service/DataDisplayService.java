@@ -1,5 +1,6 @@
 package com.msc.datamicroserv.service;
 
+import com.msc.datamicroserv.api.request.DisplayDataReq;
 import com.msc.datamicroserv.dao.entity.BloodSugarMonitorData;
 import com.msc.datamicroserv.utils.RespVO;
 
@@ -15,7 +16,7 @@ public interface DataDisplayService {
 
     RespVO<BloodSugarMonitorData> getSingleBloodSugarData(String uuid);
 
-    RespVO<List<BloodSugarMonitorData>> getBatchBloodSugarDataByTime(String mac, long startTime, long endTime);
+    RespVO<List<BloodSugarMonitorData>> getBatchBloodSugarDataByTime(DisplayDataReq request);
 
 
 }

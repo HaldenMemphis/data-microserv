@@ -1,5 +1,6 @@
 package com.msc.datamicroserv.service.impl;
 
+import com.msc.datamicroserv.api.request.DisplayDataReq;
 import com.msc.datamicroserv.dao.entity.BloodSugarMonitorData;
 import com.msc.datamicroserv.dao.mapper.BloodSugarMonitorMapper;
 import com.msc.datamicroserv.service.DataDisplayService;
@@ -31,9 +32,9 @@ public class DataDisplayServiceImpl implements DataDisplayService {
     }
 
     @Override
-    public RespVO<List<BloodSugarMonitorData>> getBatchBloodSugarDataByTime(String mac, long startTime, long endTime) {
+    public RespVO<List<BloodSugarMonitorData>> getBatchBloodSugarDataByTime(DisplayDataReq request) {
         try {
-            List<BloodSugarMonitorData> results = bloodSugarMonitorMapper.QueryBatchBloodSugarDataByTime(mac, 0, 0);
+            List<BloodSugarMonitorData> results = bloodSugarMonitorMapper.QueryBatchBloodSugarDataByTime(request);
             if(results == null || results.size() == 0) {
                 return new RespVO(100, "The query object does not exist", null);
             }
